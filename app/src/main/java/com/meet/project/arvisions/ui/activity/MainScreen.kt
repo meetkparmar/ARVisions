@@ -12,15 +12,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -55,7 +58,9 @@ fun MainScreen(
 fun ArScreen(
     viewModel: MainViewModel
 ) {
-    Box(modifier = Modifier.fillMaxSize().zIndex(1f)) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .zIndex(1f)) {
         ARScene(
             modifier = Modifier
                 .fillMaxSize(),
@@ -109,13 +114,20 @@ fun BottomView(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        IconButton(onClick = onBackClick) {
-            Icon(
-                painter = painterResource(id = com.google.android.material.R.drawable.material_ic_keyboard_arrow_left_black_24dp),
-                contentDescription = "LeftArrow",
-                modifier = Modifier.size(32.dp),
-            )
+        Surface(
+            modifier = Modifier.padding(4.dp),
+            color = Color.White.copy(0.2f),
+            shape = RoundedCornerShape(50)
+        ) {
+            IconButton(onClick = onBackClick) {
+                Icon(
+                    painter = painterResource(id = com.google.android.material.R.drawable.material_ic_keyboard_arrow_left_black_24dp),
+                    contentDescription = "LeftArrow",
+                    modifier = Modifier.size(32.dp),
+                )
+            }
         }
+
 
         Box(
             modifier = Modifier
@@ -129,13 +141,18 @@ fun BottomView(
                 contentScale = ContentScale.FillBounds
             )
         }
-
-        IconButton(onClick = onNextClick) {
-            Icon(
-                painter = painterResource(id = com.google.android.material.R.drawable.material_ic_keyboard_arrow_right_black_24dp),
-                contentDescription = "RightArrow",
-                modifier = Modifier.size(32.dp)
-            )
+        Surface(
+            modifier = Modifier.padding(4.dp),
+            color = Color.White.copy(0.2f),
+            shape = RoundedCornerShape(50)
+        ) {
+            IconButton(onClick = onNextClick) {
+                Icon(
+                    painter = painterResource(id = com.google.android.material.R.drawable.material_ic_keyboard_arrow_right_black_24dp),
+                    contentDescription = "RightArrow",
+                    modifier = Modifier.size(32.dp)
+                )
+            }
         }
     }
 }
